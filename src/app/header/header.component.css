@@ -1,0 +1,16 @@
+nav a {
+    display: inline-block;
+    width: 200px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    color: #000000;
+    text-decoration: none;
+    background-color: #e9967a;
+    border: 1px solid;
+    border-color: #800000;
+}
+
+.right {
+    float: right;
+}
