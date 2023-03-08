@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { Product} from '../model/Product'
 
@@ -10,4 +10,12 @@ import { Product} from '../model/Product'
 export class ProductComponent {
   @Input()
   product: Product | undefined;
+
+  @Output()
+  addItemToBasket = new EventEmitter<Product>();
+
+  addItem(product: Product): void{
+    console.log("Add item button is pressed for item: " + product.id)
+    this.addItemToBasket.emit(product);
+  }
 }

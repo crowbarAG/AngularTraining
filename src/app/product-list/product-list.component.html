@@ -2,7 +2,7 @@
     <p class="title">{{title}}</p>
     <ul>
         <li *ngFor = "let product of products">
-            <app-product [product]="product"></app-product>
+            <app-product [product]="product" (addItemToBasket)="catchAddItemToBasket($event)"></app-product>
         </li>
     </ul>
 </div>

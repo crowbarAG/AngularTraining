@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import { Product } from '../model/Product'
+import { Product } from '../model/Product';
+import { ProductHttpService } from "../service/ProductHttpService";
+import { BasketService } from "../service/BasketService";
 
 @Component({
   selector: 'app-product-list',
@@ -9,12 +11,16 @@ import { Product } from '../model/Product'
 })
 export class ProductListComponent {
   title = 'List of items';
-  products: Product[] = [
-    new Product(1, "Item 1", 10),
-    new Product(2, "Item 2", 20),
-    new Product(3, "Item 3", 12),
-    new Product(4, "Item 4", 25),
-    new Product(5, "Item 5", 40),
-    new Product(6, "Item 6", 4)
-  ];
+  products: Product[] = [];
+
+  constructor(private productHttpService: ProductHttpService,
+    private basketService: BasketService){
+    this.productHttpService.getProducts()
+    .subscribe(data => this.products = data);
+  }
+
+  catchAddItemToBasket(product: Product): void {
+    console.log("Add item event is catched for item:" + product.id);
+    this.basketService.addItem(product);
+  }
 }

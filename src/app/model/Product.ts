@@ -1,11 +1,14 @@
-export class Product{
+export interface Product{
     id: number;
-    name: string;
+    title: string;
     price: number;
+    description: string;
+    category: string;
+    image: string;
+    rating: Rating;
+}
 
-    constructor(id: number, name: string, price: number){
-        this.id = id;
-        this.name = name;
-        this.price = price;
-    }
+export interface Rating{
+    rate: number;
+    count: number;
 }
